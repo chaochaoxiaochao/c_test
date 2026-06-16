@@ -1,9 +1,10 @@
+#include "hello_support.hpp"
+
 #include <iostream>
-#include <string>
 
 int main() {
-    const std::string message = "hello simple test";
-    if (message.find("hello") == std::string::npos) {
+    const auto message = hello::message_for("simple test");
+    if (!hello::contains_hello(message)) {
         std::cerr << "expected message to contain hello" << std::endl;
         return 1;
     }
