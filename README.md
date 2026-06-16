@@ -114,6 +114,31 @@ add_benchmark(<name>
 )
 ```
 
+When a test needs extra include directories or libraries, use the keyword form:
+
+```cmake
+add_simple_test(<name>
+    SOURCES
+        tests/<name>_simple_test.cpp
+    INCLUDE_DIRS
+        include
+    LIBRARIES
+        <name>_support
+        Threads::Threads
+)
+
+add_catch2_test(<name>
+    SOURCES
+        tests/<name>_catch2_test.cpp
+    INCLUDE_DIRS
+        include
+    LIBRARIES
+        <name>_support
+)
+```
+
+`${PROJECT_SOURCE_DIR}/include` is added automatically to every demo and test target. Put demo-private headers under `demos/<name>/include` and pass that path through `INCLUDE_DIRS`; put repeated logic in a small support library and pass it through `LIBRARIES`.
+
 This creates stable targets:
 
 ```text

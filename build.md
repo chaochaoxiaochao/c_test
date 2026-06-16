@@ -173,3 +173,39 @@ add_benchmark(<name>
     benchmarks/<name>_benchmark.cpp
 )
 ```
+
+Tests can also declare their own include directories and link libraries without changing the root CMake file:
+
+```cmake
+find_package(Threads REQUIRED)
+
+add_library(<name>_support
+    <name>_support.cpp
+)
+target_include_directories(<name>_support PUBLIC
+    "${CMAKE_CURRENT_SOURCE_DIR}/include"
+)
+target_link_libraries(<name>_support PUBLIC
+    Threads::Threads
+)
+
+add_simple_test(<name>
+    SOURCES
+        tests/<name>_simple_test.cpp
+    INCLUDE_DIRS
+        include
+    LIBRARIES
+        <name>_support
+)
+
+add_catch2_test(<name>
+    SOURCES
+        tests/<name>_catch2_test.cpp
+    INCLUDE_DIRS
+        include
+    LIBRARIES
+        <name>_support
+)
+```
+
+The old shorthand remains valid when a test only needs source files. `${PROJECT_SOURCE_DIR}/include` is always included automatically.

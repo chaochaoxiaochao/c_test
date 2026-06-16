@@ -32,6 +32,8 @@ demos/<name>/benchmarks/ Google Benchmark sources for that demo
   - `add_simple_test(<name> ...)`
   - `add_catch2_test(<name> ...)`
   - `add_benchmark(<name> ...)`
+- For test-only dependencies, prefer the keyword form: `add_simple_test(<name> SOURCES ... INCLUDE_DIRS ... LIBRARIES ...)` and `add_catch2_test(<name> SOURCES ... INCLUDE_DIRS ... LIBRARIES ...)`.
+- `${PROJECT_SOURCE_DIR}/include` is added to demo and test targets automatically; pass demo-local headers through `INCLUDE_DIRS` and shared support libraries through `LIBRARIES`.
 
 ## Target Naming
 
