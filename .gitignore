@@ -1,0 +1,28 @@
+# CMake/build outputs
+build/
+cmake-build-*/
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+CTestTestfile.cmake
+DartConfiguration.tcl
+Makefile
+
+# Keep the root wrapper Makefile tracked
+!/Makefile
+
+# Generated binaries and logs
+*.o
+*.a
+*.so
+*.dylib
+*.dll
+*.exe
+*.out
+*.log
+Testing/
+
+# Editor/OS noise
+.DS_Store
+.vscode/
+.idea/
